@@ -1,0 +1,8 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pypacctoolbox"
+description = "Collection of curated, tested and easy to use accelerator physics code"
+version = "0.0.1"
