@@ -8,12 +8,12 @@ class Drift(_elementBase) :
         self._length = length
 
         # create canonical symbols
-        x, px, y, py, z, delta = _sympy.symbols('x,px,y,py,z,delta')
+        x, px, y, py, z, delta = _sympy.symbols('x,p_x,y,p_y,z,delta')
         beta0 = _sympy.Symbol('beta0')
         gamma0 = _sympy.Symbol("gamma0")
 
         # set canonical varibales
-        self.canonical_variables = [x, y, z]
+        self.canonical_coords = [x, y, z]
         self.canonical_momenta   = [px, py, delta]
 
         # element hamiltonian
