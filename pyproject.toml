@@ -1,8 +1,11 @@
 [build-system]
-requires = ["setuptools >= 61.0"]
+requires = ["toml","setuptools >= 61.0", "setuptools_scm[toml]>=3.4"]
 build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
+write_to = "src/pypacctoolbox/_version.py"
 
 [project]
 name = "pypacctoolbox"
+dynamic = ["version"]
 description = "Collection of curated, tested and easy to use accelerator physics code"
-version = "0.0.1"
