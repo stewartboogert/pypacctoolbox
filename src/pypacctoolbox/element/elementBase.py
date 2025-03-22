@@ -41,6 +41,14 @@ class elementBase :
         self.canonical_coords = canonical_variables[0:3]
         self.canonical_momenta = canonical_variables[3:6]
 
+    @property
+    def relativistic_variables(self):
+        return self._relativistic_variables
+
+    @relativistic_variables.setter
+    def relativistic_variables(self, relativistic_variables):
+        self._relativistic_variables = relativistic_variables
+
     def equations_of_motion(self):
         v = self.canonical_coords
         p = self.canonical_momenta
@@ -51,4 +59,8 @@ class elementBase :
                 _diff(self.hamiltonian,p[0]),
                 _diff(self.hamiltonian,p[1]),
                 _diff(self.hamiltonian,p[2])]
+
+    def paraxial(self):
+        h = self.hamiltonian
+
 

@@ -16,6 +16,9 @@ class Drift(_elementBase) :
         self.canonical_coords = [x, y, z]
         self.canonical_momenta   = [px, py, delta]
 
+        # set relativistic factors
+        self.relativistic_variables = [beta0, gamma0]
+
         # element hamiltonian
         self.hamiltonian = delta/beta0 - _sqrt((delta + 1/beta0)**2 - px**2 - py**2 - 1/(beta0*gamma0)**2)
 
