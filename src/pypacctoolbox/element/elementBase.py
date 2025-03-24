@@ -75,7 +75,16 @@ class elementBase :
 
         return h_simp
 
-    def paraxial(self):
-        h = self.hamiltonian
+
+    def approximate_hamiltonian(self, order=2):
+        v = self.canonical_variables
+
+
+        for i in range(0,len(v)) :
+            for j in range(0,len(v)) :
+                for o1 in range(j, order+1):
+                    for o2 in range(0, order) :
+                        print(v[i],v[j],o1,o2,self.taylor_coefficient(v[i],o1,v[j],o2))
+
 
 
