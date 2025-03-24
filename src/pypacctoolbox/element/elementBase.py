@@ -79,7 +79,6 @@ class elementBase :
     def approximate_hamiltonian(self, order=2):
         v = self.canonical_variables
 
-
         for i in range(0,len(v)) :
             for j in range(0,len(v)) :
                 for o1 in range(j, order+1):
