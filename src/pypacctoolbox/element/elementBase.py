@@ -1,4 +1,6 @@
 from sympy import diff as _diff
+from sympy import Wild as _Wild
+from sympy import sqrt as _sqrt
 
 class elementBase :
 
@@ -7,6 +9,7 @@ class elementBase :
         self._hamiltonian = None
         self._canonical_coords = []
         self._canonical_momenta = []
+        self._relativistic_variables = []
 
     @property
     def hamiltonian(self):
@@ -59,6 +62,18 @@ class elementBase :
                 _diff(self.hamiltonian,p[0]),
                 _diff(self.hamiltonian,p[1]),
                 _diff(self.hamiltonian,p[2])]
+
+    def taylor_coefficient(self, var1,  order1,var2, order2):
+        h = self.hamiltonian
+
+        x, y, z, p_x, p_y, delta = self.canonical_variables
+        beta0, gamma0 = self.relativistic_variables
+
+        h_deriv = h.diff(var1, order1).diff(var2, order2)
+        h_zero  = h_deriv.subs({x: 0, p_x: 0, y: 0, p_y: 0, z: 0, delta: 0})
+        h_simp  = h_zero.subs({gamma0:1/_sqrt(1-beta0**2)}).simplify()
+
+        return h_simp
 
     def paraxial(self):
         h = self.hamiltonian
