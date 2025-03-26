@@ -2,7 +2,7 @@
 # list**mi
 # diff(expr, var, mi)
 #
-
+import math
 import sympy as _sympy
 import math as _math
 import itertools as _itertools
@@ -14,6 +14,9 @@ class MultiIndex :
 
     def __add__(self, other) :
         return MultiIndex([v1+v2 for v1, v2 in zip(self.indices, other.indices)])
+
+    def __sub__(self, other) :
+        return MultiIndex([v1-v2 for v1, v2 in zip(self.indices, other.indices)])
 
     def diff(self, exprs, vars):
         pass
@@ -42,11 +45,12 @@ class MultiIndex :
 
         return vprod
 
-    def binominal(self):
-        pass
+    @staticmethod
+    def binominal(alpha, beta):
+        return alpha.factorial()/(beta.factorial()*(alpha-beta).factorial())
 
-    def multinomial(self):
-        pass
+    def multinomial(self, k):
+        return math.fabs(k)/self.factorial()
 
     def power(self, vars):
         pass
