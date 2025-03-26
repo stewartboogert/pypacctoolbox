@@ -80,9 +80,9 @@ class elementBase :
         v = self.canonical_variables
 
         for i in range(0,len(v)) :
-            for j in range(0,len(v)) :
-                for o1 in range(j, order+1):
-                    for o2 in range(0, order) :
+            for j in range(i,len(v)) :
+                for o1 in range(0, order+1):
+                    for o2 in range(o1, order+1) :
                         print(v[i],v[j],o1,o2,self.taylor_coefficient(v[i],o1,v[j],o2))
 
 
