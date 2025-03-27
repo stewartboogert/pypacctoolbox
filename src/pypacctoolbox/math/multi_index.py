@@ -18,9 +18,6 @@ class MultiIndex :
     def __sub__(self, other) :
         return MultiIndex([v1-v2 for v1, v2 in zip(self.indices, other.indices)])
 
-    def diff(self, exprs, vars):
-        pass
-
     def norm(self):
         vsum = 0
 
@@ -51,9 +48,6 @@ class MultiIndex :
 
     def multinomial(self, k):
         return math.fabs(k)/self.factorial()
-
-    def power(self, vars):
-        pass
 
     def __eq__(self, other) :
         for v1,v2 in zip(self.indices, other.indices):
@@ -112,6 +106,15 @@ class MultiIndex :
 
         return mi
 
+    @staticmethod
+    def power(x, multi_index):
+        pass
+
+
+    @staticmethod
+    def diff(to_diff, vars, multi_index):
+        for v, i in zip(vars, multi_index.indices) :
+            print(v,i,to_diff.diff(v,i))
 
 
 
