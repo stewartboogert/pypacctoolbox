@@ -121,6 +121,7 @@ class MultiIndex :
             to_diff = to_diff.diff(v,i)
 
         return to_diff
+
     @staticmethod
     def taylor(to_taylor, vars, multi_index):
         taylor_series = 0
