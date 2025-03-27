@@ -107,14 +107,28 @@ class MultiIndex :
         return mi
 
     @staticmethod
-    def power(x, multi_index):
-        pass
+    def power(vars, multi_index):
+        result = 1
 
+        for v, i in zip(vars, multi_index.indices) :
+            result *= v**i
+
+        return result
 
     @staticmethod
     def diff(to_diff, vars, multi_index):
         for v, i in zip(vars, multi_index.indices) :
-            print(v,i,to_diff.diff(v,i))
+            to_diff = to_diff.diff(v,i)
 
+        return to_diff
+    @staticmethod
+    def taylor(to_taylor, vars, multi_index):
+        taylor_series = 0
 
+        for alpha in multi_index :
+            #print(alpha)
+            taylor_series += MultiIndex.diff(to_taylor, vars, alpha).subs(zip(vars, [0,0,0,0,0,0]))* \
+                             MultiIndex.power(vars,alpha)/alpha.factorial()
+
+        return taylor_series
 
