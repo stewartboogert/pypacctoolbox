@@ -127,7 +127,6 @@ class MultiIndex :
         taylor_series = 0
 
         for alpha in multi_index :
-            #print(alpha)
             taylor_series += MultiIndex.diff(to_taylor, vars, alpha).subs(zip(vars, len(vars)*[0]))* \
                              MultiIndex.power(vars,alpha)/alpha.factorial()
 
