@@ -123,12 +123,17 @@ class MultiIndex :
         return to_diff
 
     @staticmethod
-    def taylor(to_taylor, vars, multi_index):
+    def taylor(to_taylor, vars, order = 2, multi_index = None):
         taylor_series = 0
 
+        if not multi_index :
+            multi_index = MultiIndex(len(vars)*[order+1])
+
         for alpha in multi_index :
-            taylor_series += MultiIndex.diff(to_taylor, vars, alpha).subs(zip(vars, len(vars)*[0]))* \
-                             MultiIndex.power(vars,alpha)/alpha.factorial()
+            # print(alpha, MultiIndex.diff(to_taylor, vars, alpha))
+            if alpha.norm() < order :
+                taylor_series += MultiIndex.diff(to_taylor, vars, alpha).subs(zip(vars, len(vars)*[0]))* \
+                                 MultiIndex.power(vars,alpha)/alpha.factorial()
 
         return taylor_series
 
