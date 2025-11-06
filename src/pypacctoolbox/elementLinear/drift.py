@@ -7,7 +7,7 @@ class drift(_elementLinearBase):
                  length=_sympy.Symbol('L'),
                  beta = _sympy.Symbol('beta'),
                  gamma= _sympy.Symbol('gamma')):
-        _elementLinearBase.__init__(self, name, length)
+        _elementLinearBase.__init__(self, name, "drift", length)
         self._beta = beta
         self._gamma = gamma
         self._relativistic_variables = [self._beta, self._gamma]

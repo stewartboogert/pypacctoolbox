@@ -13,7 +13,7 @@ class quadrupole(_elementLinearBase):
                  k1=_sympy.Symbol('k1'),
                  beta = _sympy.Symbol('beta'),
                  gamma= _sympy.Symbol('gamma')):
-        _elementLinearBase.__init__(self, name, length)
+        _elementLinearBase.__init__(self, name, "quadrupole", length)
         self._beta = beta
         self._gamma = gamma
         self._k1 = k1
