@@ -7,7 +7,7 @@ class elementLinearBase :
     def __init__(self,
                  name='',
                  type='base',
-                 length=_sympy.Symbol('L')):
+                 length=0):
         self._name = name
         self._type = type
         self._length = length
@@ -54,23 +54,23 @@ class elementLinearBase :
 
     @property
     def matrixXYZ(self):
-        return self._matrix
+        return self.matrix
 
     @property
     def matrixX(self):
-        return self._matrix[0:2,0:2]
+        return self.matrix[0:2,0:2]
 
     @property
     def matrixY(self):
-        return self._matrix[2:4,2:4]
+        return self.matrix[2:4,2:4]
 
     @property
     def matrixXY(self):
-        return self._matrix[0:4,0:4]
+        return self.matrix[0:4,0:4]
 
     @property
     def matrixZ(self):
-        return self._matrix[4:6,4:6]
+        return self.matrix[4:6,4:6]
 
     @property
     def matrixXZ(self):

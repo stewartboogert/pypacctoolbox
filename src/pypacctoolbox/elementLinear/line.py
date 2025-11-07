@@ -4,10 +4,12 @@ from sympy import Symbol as _Symbol
 
 class line(_elementLinearBase):
 
-    def __init__(self, name='temp'):
-        _elementLinearBase.__init__(self, name, "line", _Symbol("temp"))
+    def __init__(self, name='temp', elements = []):
+        _elementLinearBase.__init__(self, name, "line", 0)
         self._nameCountDict = {}
-        self._elements = []
+        self._elements = elements
+        self._calculateMatrix()
+        self._calculateLength()
 
     @property
     def nameCountDict(self):
@@ -45,6 +47,14 @@ class line(_elementLinearBase):
             self.matrix = self.matrix * e.matrix
 
         self.elements.append(e)
+
+    def _calculateMatrix(self):
+        for e in self.elements[::-1]:
+            self.matrix = e.matrix * self.matrix
+
+    def _calculateLength(self):
+        for e in self.elements:
+            self.length += e.length
 
     def reverse(self):
         self.elements.reverse(self)
