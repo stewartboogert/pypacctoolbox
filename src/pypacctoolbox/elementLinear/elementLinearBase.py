@@ -75,10 +75,12 @@ class elementLinearBase :
     @property
     def matrixXZ(self):
         z = _sympy.Matrix([[0,0],[0,0]])
+        mxz = self.matrix[0:2,4:6]
+        mzx = self.matrix[4:6,0:2]
         mx = self.matrixX
         mz = self.matrixZ
 
-        blocks = [[mx,z],[z,mz]]
+        blocks = [[mx,mxz],[mzx,mz]]
 
         return _sympy.BlockMatrix(blocks).as_explicit()
 
