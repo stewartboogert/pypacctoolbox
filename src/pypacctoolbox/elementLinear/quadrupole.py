@@ -9,13 +9,15 @@ from sympy import sinh as _sinh
 class quadrupole(_elementLinearBase):
 
     def __init__(self, name='',
-                 length=_sympy.Symbol('L'),
-                 k1=_sympy.Symbol('k1'),
+                 length=None,
+                 k1=None,
                  beta = _sympy.Symbol('beta'),
                  gamma= _sympy.Symbol('gamma')):
         _elementLinearBase.__init__(self, name, "quadrupole", length)
         self.beta = beta
         self.gamma = gamma
+        if not k1 :
+            k1 = _sympy.Symbol(f'k1_{name}')
         self.k1 = k1
         self._relativistic_variables = [self._beta, self._gamma]
         self.matrix = self.makeMatrix(self.length, self.k1, self.beta, self.gamma)

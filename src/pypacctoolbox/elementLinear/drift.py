@@ -4,9 +4,10 @@ import sympy as _sympy
 class drift(_elementLinearBase):
 
     def __init__(self, name='',
-                 length=_sympy.Symbol('L'),
+                 length=None,
                  beta = _sympy.Symbol('beta'),
                  gamma= _sympy.Symbol('gamma')):
+
         _elementLinearBase.__init__(self, name, "drift", length)
         self.beta = beta
         self.gamma = gamma

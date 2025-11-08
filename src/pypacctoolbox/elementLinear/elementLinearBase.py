@@ -8,6 +8,9 @@ class elementLinearBase :
                  name='',
                  type='base',
                  length=0):
+        if not length:
+            length = _sympy.Symbol(f'L_{name}')
+
         self._name = name
         self._type = type
         self._length = length

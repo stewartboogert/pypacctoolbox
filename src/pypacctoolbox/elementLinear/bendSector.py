@@ -9,13 +9,17 @@ from sympy import sinh as _sinh
 class bendSector(_elementLinearBase):
 
     def __init__(self, name='',
-                 length=_sympy.Symbol('L'),
-                 k0=_sympy.Symbol('k0'),
+                 length=None,
+                 k0=None,
                  beta = _sympy.Symbol('beta'),
                  gamma= _sympy.Symbol('gamma')):
+
         _elementLinearBase.__init__(self, name, "quadrupole", length)
+
         self.beta = beta
         self.gamma = gamma
+        if not k0 :
+            k0 = _sympy.Symbol(f'k0_{name}')
         self.k0 = k0
         self._relativistic_variables = [self._beta, self._gamma]
         self.matrix = self.makeMatrix(self.length, self.k0, self.beta, self.gamma)
