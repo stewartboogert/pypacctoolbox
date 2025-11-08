@@ -11,6 +11,8 @@ class elementLinearBase :
         self._name = name
         self._type = type
         self._length = length
+        self._beta = 0
+        self._gamma = 1
 
     @property
     def name(self):
@@ -35,6 +37,22 @@ class elementLinearBase :
     @length.setter
     def length(self, length):
         self._length = length
+
+    @property
+    def beta(self):
+        return self._beta
+
+    @beta.setter
+    def beta(self, beta):
+        self._beta = beta
+
+    @property
+    def gamma(self):
+        return self._gamma
+
+    @gamma.setter
+    def gamma(self, gamma):
+        self._gamma = gamma
 
     @property
     def matrix(self):

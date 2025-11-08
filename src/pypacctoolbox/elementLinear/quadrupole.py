@@ -14,11 +14,19 @@ class quadrupole(_elementLinearBase):
                  beta = _sympy.Symbol('beta'),
                  gamma= _sympy.Symbol('gamma')):
         _elementLinearBase.__init__(self, name, "quadrupole", length)
-        self._beta = beta
-        self._gamma = gamma
-        self._k1 = k1
+        self.beta = beta
+        self.gamma = gamma
+        self.k1 = k1
         self._relativistic_variables = [self._beta, self._gamma]
-        self._matrix = self.makeMatrix(self.length, self._k1, self._beta, self._gamma)
+        self.matrix = self.makeMatrix(self.length, self.k1, self.beta, self.gamma)
+
+    @property
+    def k1(self):
+        return self._k1
+
+    @k1.setter
+    def k1(self, k1):
+        self._k1 = k1
 
     def makeMatrix(self, L, k1, beta, gamma):
         if k1.is_negative :
