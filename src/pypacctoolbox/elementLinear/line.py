@@ -76,8 +76,9 @@ class line(_elementLinearBase):
             else:
                 l.nameCountDict[k] = other.nameCountDict[k]
 
-        # calcualte matrix
-        l._calculateMatrix()
+        # calculate matrix
+        l.matrix = (self.matrix * other.matrix)
+        l.matrix.simplify()
 
         # merge lengths
         l.length = self.length + other.length
