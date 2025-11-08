@@ -5,13 +5,10 @@ class drift(_elementLinearBase):
 
     def __init__(self, name='',
                  length=None,
-                 beta = _sympy.Symbol('beta'),
-                 gamma= _sympy.Symbol('gamma')):
+                 beta=None,
+                 gamma=None):
 
-        _elementLinearBase.__init__(self, name, "drift", length)
-        self.beta = beta
-        self.gamma = gamma
-        self._relativistic_variables = [self._beta, self._gamma]
+        _elementLinearBase.__init__(self, name, "drift", length, beta, gamma)
         self._matrix = self.makeMatrix(self.length, self.beta, self.gamma)
 
     def makeMatrix(self, L, beta, gamma):

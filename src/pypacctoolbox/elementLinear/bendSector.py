@@ -11,17 +11,15 @@ class bendSector(_elementLinearBase):
     def __init__(self, name='',
                  length=None,
                  k0=None,
-                 beta = _sympy.Symbol('beta'),
-                 gamma= _sympy.Symbol('gamma')):
+                 beta=None,
+                 gamma=None):
 
-        _elementLinearBase.__init__(self, name, "quadrupole", length)
+        _elementLinearBase.__init__(self, name, "quadrupole", length, beta, gamma)
 
-        self.beta = beta
-        self.gamma = gamma
         if not k0 :
             k0 = _sympy.Symbol(f'k0_{name}')
         self.k0 = k0
-        self._relativistic_variables = [self._beta, self._gamma]
+
         self.matrix = self.makeMatrix(self.length, self.k0, self.beta, self.gamma)
 
     @property

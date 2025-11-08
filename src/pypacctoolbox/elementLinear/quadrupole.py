@@ -11,15 +11,14 @@ class quadrupole(_elementLinearBase):
     def __init__(self, name='',
                  length=None,
                  k1=None,
-                 beta = _sympy.Symbol('beta'),
-                 gamma= _sympy.Symbol('gamma')):
-        _elementLinearBase.__init__(self, name, "quadrupole", length)
-        self.beta = beta
-        self.gamma = gamma
+                 beta=None,
+                 gamma=None):
+        _elementLinearBase.__init__(self, name, "quadrupole", length, beta, gamma)
+
         if not k1 :
             k1 = _sympy.Symbol(f'k1_{name}')
         self.k1 = k1
-        self._relativistic_variables = [self._beta, self._gamma]
+
         self.matrix = self.makeMatrix(self.length, self.k1, self.beta, self.gamma)
 
     @property

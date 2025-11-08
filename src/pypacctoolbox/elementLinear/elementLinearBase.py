@@ -7,15 +7,27 @@ class elementLinearBase :
     def __init__(self,
                  name='',
                  type='base',
-                 length=0):
-        if not length:
-            length = _sympy.Symbol(f'L_{name}')
+                 length=0,
+                 beta=None,
+                 gamma=None):
 
         self._name = name
         self._type = type
+
+        if not length:
+            length = _sympy.Symbol(f'L_{name}')
         self._length = length
-        self._beta = 0
-        self._gamma = 1
+
+        if not beta:
+            beta = _sympy.Symbol('beta')
+        self.beta = beta
+
+        if not gamma:
+            gamma = _sympy.Symbol('gamma')
+        self.gamma = gamma
+
+        self._relativistic_variables = [self._beta, self._gamma]
+
 
     @property
     def name(self):
