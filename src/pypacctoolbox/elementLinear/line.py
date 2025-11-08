@@ -111,7 +111,7 @@ class line(_elementLinearBase):
         return self*other
 
     def __getitem__(self,i):
-        return self.elements[i]
+        return line(self.name, self.elements[i])
 
     def __repr__(self):
         s = ""
