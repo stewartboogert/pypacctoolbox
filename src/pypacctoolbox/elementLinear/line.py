@@ -85,6 +85,31 @@ class line(_elementLinearBase):
 
         return l
 
+    def __neg__(self):
+        l = line()
+        l.elements = [e for e in self.elements[::-1]]
+
+        l._calculateMatrix()
+        l._calculateLength()
+
+        return l
+
+    def __mul__(self, other):
+        l = line()
+        l.elements = other*self.elements
+
+        # loop over elements and calcualte matrix and length
+        for i in range(0,other,1):
+            l.length += self.length
+            l.matrix *= self.matrix
+
+        l.matrix.simplify()
+
+        return l
+
+    def __rmul__(self, other):
+        return self*other
+
     def __getitem__(self,i):
         return self.elements[i]
 
