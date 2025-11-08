@@ -51,6 +51,7 @@ class line(_elementLinearBase):
     def _calculateMatrix(self):
         for e in self.elements[::-1]:
             self.matrix = e.matrix * self.matrix
+        self.matrix.simplify()
 
     def _calculateLength(self):
         for e in self.elements:
@@ -74,6 +75,9 @@ class line(_elementLinearBase):
                 l.nameCountDict[k] += other.nameCountDict[k]
             else:
                 l.nameCountDict[k] = other.nameCountDict[k]
+
+        # calcualte matrix
+        l._calculateMatrix()
 
         # merge lengths
         l.length = self.length + other.length
