@@ -27,6 +27,18 @@ class line(_elementLinearBase):
     def elements(self, elements):
         self._elements = elements
 
+    @property
+    def dispersion(self):
+        return self.matrix[0,5]
+
+    @property
+    def dispersionPrime(self):
+        return self.matrix[1,5]
+
+    @property
+    def r56(self):
+        return self.matrix[4,5]
+
     def append(self,e):
         # append length
         if len(self.elements) == 0:
