@@ -121,8 +121,8 @@ class elementLinearBase :
         from .line import line as line
 
         l = line()
-        l._matrix = self.matrixXYZ * other.matrixXYZ
-        l._length = self.length + other.length
+        l.matrix = self.matrixXYZ * other.matrixXYZ
+        l.length = self.length + other.length
 
         return l
 
